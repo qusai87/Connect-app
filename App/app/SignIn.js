@@ -2,7 +2,15 @@
 import React, { Component } from 'react';
 import Meteor, { Accounts } from 'react-native-meteor';
 
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Dimensions,
+  Image,
+} from 'react-native'
 const { width } = Dimensions.get('window');
 
 class SignIn extends React.Component {
