@@ -1,9 +1,9 @@
-import WelcomeScreen from './Welcome';
-import MainScreen from './Main';
-
 import {
   StackNavigator,
 } from 'react-navigation';
+
+import WelcomeScreen from './Welcome';
+import MainScreen from './Main';
 
 const App = StackNavigator({
   Welcome: { screen: WelcomeScreen },

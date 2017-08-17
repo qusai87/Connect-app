@@ -1,8 +1,8 @@
 // /app/SignOut.js
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native';
-
 import Meteor from 'react-native-meteor';
+
 const { width } = Dimensions.get('window');
 
 class SignOut extends Component {

@@ -8,12 +8,12 @@ import {
   View,
   TouchableOpacity,
   TextInput,
-  Dimensions,
-  Image,
-} from 'react-native'
+  Dimensions
+} from 'react-native';
+
 const { width } = Dimensions.get('window');
 
-class SignIn extends React.Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
 
@@ -22,23 +22,6 @@ class SignIn extends React.Component {
       password: '',
       error: null, // added this
     };
-  }
-
-  isValid() {
-    const { email, password } = this.state;
-    let valid = false;
-
-    if (email.length > 0 && password.length > 0) {
-      valid = true;
-    }
-
-    if (email.length === 0) {
-      this.setState({ error: 'You must enter an email address' });
-    } else if (password.length === 0) {
-      this.setState({ error: 'You must enter a password' });
-    }
-
-    return valid;
   }
 
   onSignIn() {
@@ -67,12 +50,29 @@ class SignIn extends React.Component {
     }
   }
 
+  isValid() {
+    const { email, password } = this.state;
+    let valid = false;
+
+    if (email.length > 0 && password.length > 0) {
+      valid = true;
+    }
+
+    if (email.length === 0) {
+      this.setState({ error: 'You must enter an email address' });
+    } else if (password.length === 0) {
+      this.setState({ error: 'You must enter a password' });
+    }
+
+    return valid;
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <TextInput
           style={styles.input}
-          onChangeText={(email) => this.setState({email})}
+          onChangeText={(email) => this.setState({ email })}
           placeholder="Email"
           autoCapitalize="none"
           autoCorrect={false}
@@ -81,11 +81,11 @@ class SignIn extends React.Component {
 
         <TextInput
           style={styles.input}
-          onChangeText={(password) => this.setState({password})}
+          onChangeText={(password) => this.setState({ password })}
           placeholder="Password"
           autoCapitalize="none"
           autoCorrect={false}
-          secureTextEntry={true}
+          secureTextEntry
         />
 
         <Text style={styles.error}>{this.state.error}</Text>

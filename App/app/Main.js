@@ -1,16 +1,12 @@
 // app/index.js
 import React, { Component } from 'react';
-import Carousel from 'react-native-looped-carousel';
 
 import {
   StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Dimensions
-} from 'react-native'
-import Meteor, { connectMeteor , createContainer } from 'react-native-meteor';
+  View
+} from 'react-native';
+
+import Meteor, { connectMeteor, createContainer } from 'react-native-meteor';
 import ItemInfo from './ItemInfo';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
@@ -29,6 +25,12 @@ class App extends Component {
     const SERVER_URL = 'ws://localhost:3000/websocket';
     Meteor.connect(SERVER_URL);  
   }
+  getMeteorData() {
+    console.log('loading user');
+    return {
+      user: Meteor.user(),
+    };
+  }
   render() { 
     if (this.data.user) {
       return (
@@ -36,7 +38,7 @@ class App extends Component {
           <ItemInfo />
           <SignOut />
         </View>
-      )
+      );
     }
 
     return (
@@ -44,12 +46,6 @@ class App extends Component {
         <SignIn />
       </View>
     );
-  }
-  getMeteorData() {
-    console.log('loading user');
-    return {
-      user: Meteor.user(),
-    };
   }
 }
 

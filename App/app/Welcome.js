@@ -9,7 +9,7 @@ import {
   Image,
   Button,
   Dimensions,
-} from 'react-native'
+} from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -26,7 +26,7 @@ class Welcome extends Component {
     };
   }
   
-  _onLayoutDidChange = (e) => {
+  onLayoutDidChange = (e) => {
     const layout = e.nativeEvent.layout;
     this.setState({ size: { width: layout.width, height: layout.height } });
   }
@@ -34,11 +34,11 @@ class Welcome extends Component {
   render() { 
      const { navigate } = this.props.navigation;
     return (
-        <View style={styles.container} onLayout={this._onLayoutDidChange}>
+        <View style={styles.container} onLayout={this.onLayoutDidChange}>
         <Carousel
           delay={5000}
           style={this.state.size}
-          bullets={true}
+          bullets
           onAnimateNextPage={(p) => console.log(p)}
         >
           <View style={[styles.container, this.state.size]}>
@@ -48,8 +48,8 @@ class Welcome extends Component {
                   width: 300,
                   height: 200,
                 }}
-                resizeMode={"contain"}
-                source={{uri:'https://unsplash.it/200/300'}}
+                resizeMode={'contain'}
+                source={{ uri: 'https://unsplash.it/200/300' }}
               />
               <Text>Chat with local people that matters to you!</Text>
           </View>
@@ -71,7 +71,9 @@ class Welcome extends Component {
           </View>
           <View style={[styles.container, this.state.size]}>
               <Text>Done!</Text>
-              <Text>Thomas invite him to a cup of coffee!, to talk about his interesting website!</Text>
+              <Text>
+                Thomas invite him to a cup of coffee!, to talk about his interesting website!
+              </Text>
           </View>
           <View style={[styles.container, this.state.size]}>
             <Button

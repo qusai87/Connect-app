@@ -1,9 +1,16 @@
 // /app/ItemInfo.js
 import React, { Component } from 'react';
-import { StyleSheet, Text, View , TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Meteor, { createContainer } from 'react-native-meteor';
 
 class ItemInfo extends Component {
+  handleAddItem() {
+    const name = Math.floor(Math.random() * 10); // just generate some random number
+    Meteor.call('Items.addOne', { name }, (err, res) => {
+      // Do whatever you want with the response
+      console.log('Items.addOne', err, res);
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -15,13 +22,6 @@ class ItemInfo extends Component {
         </TouchableOpacity>
       </View>
     );
-  }
-  handleAddItem() {
-    const name = Math.floor(Math.random() * 10); // just generate some random number
-    Meteor.call('Items.addOne', { name }, (err, res) => {
-      // Do whatever you want with the response
-      console.log('Items.addOne', err, res);
-    });
   }
 }
 
